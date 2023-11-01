@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Water Management</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        #status, #sensors {
+            font-size: 18px;
+        }
+        
+        #sensors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .sensor-reading {
+            flex: 0 0 calc(33.333% - 20px);
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            font-size: 24px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+        
+        #waterContaminants {
+            color: #e74c3c;
+        }
+        
+        #graphic-picture {
+            text-align: center;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1 style="font-family: 'Helvetica Neue', sans-serif;">Smart Water Management System</h1>
+    </div>
+    <div id="container">
+        <div id="status">
+            <h2>System Status</h2>
+            <p>Water Level: <span id="waterLevel">Normal</span></p>
+            <p>Water Quality: <span id="waterQuality">Good</span></p>
+            <p>Water Pressure: <span id="waterPressure">20 psi</span></p>
+        </div>
+        <div id="sensors">
+            <div class="sensor-reading">
+                <h2>Water Level Sensor</h2>
+                <p><span id="waterLevelSensor">75%</span></p>
+            </div>
+            <div class="sensor-reading">
+                <h2>Water Quality Sensor</h2>
+                <p><span id="waterQualitySensor">Excellent</span></p>
+            </div>
+            <div class="sensor-reading">
+                <h2>Water Pressure Sensor</h2>
+                <p><span id="waterPressureSensor">20 psi</span></p>
+            </div>
+            <div class="sensor-reading">
+                <h2>Water Usage</h2>
+                <p><span id="waterUsage">500 gallons/day</span></p>
+            </div>
+            <div class="sensor-reading">
+                <h2>pH Value</h2>
+                <p><span id="pHValue">7.0</span></p>
+            </div>
+            <div class="sensor-reading">
+                <h2>Water Contaminants</h2>
+                <p><span id="waterContaminants">None</span></p>
+            </div>
+        </div>
+    </div>
+    <div id="graphic-picture">
+        <img src="your-image-url.jpg" alt="Water Management Image">
+    </div>
+    <script>
+        // Simulated sensor data (you'd replace this with real data)
+        const simulatedData = {
+            waterLevel: "Normal",
+            waterQuality: "Good",
+            waterPressure: "20 psi",
+            waterLevelSensor: "75%",
+            waterQualitySensor: "Excellent",
+            waterPressureSensor: "20 psi",
+            waterUsage: "500 gallons/day",
+            pHValue: "7.0",
+            waterContaminants: "None",
+        };
+        
+        // Update the HTML elements with sensor data
+        function updateSensorData() {
+            document.getElementById("waterLevel").textContent = simulatedData.waterLevel;
+            document.getElementById("waterQuality").textContent = simulatedData.waterQuality;
+            document.getElementById("waterPressure").textContent = simulatedData.waterPressure;
+            document.getElementById("waterLevelSensor").textContent = simulatedData.waterLevelSensor;
+            document.getElementById("waterQualitySensor").textContent = simulatedData.waterQualitySensor;
+            document.getElementById("waterPressureSensor").textContent = simulatedData.waterPressureSensor;
+            document.getElementById("waterUsage").textContent = simulatedData.waterUsage;
+            document.getElementById("pHValue").textContent = simulatedData.pHValue;
+            document.getElementById("waterContaminants").textContent = simulatedData.waterContaminants;
+        }
+        
+        // Initial data update
+        updateSensorData();
+        
+        // Periodically update the sensor data (simulated)
+        setInterval(() => {
+            // Simulate data update
+            simulatedData.waterLevelSensor = (Math.random() * 100).toFixed(2) + "%";
+            simulatedData.waterQualitySensor = ["Excellent", "Good", "Fair", "Poor"][Math.floor(Math.random() * 4)];
+            simulatedData.waterPressureSensor = (Math.random() * 50 + 10).toFixed(2) + " psi";
+            simulatedData.waterUsage = (Math.random() * 1000).toFixed(2) + " gallons/day";
+            simulatedData.pHValue = (Math.random() * 14).toFixed(2);
+            simulatedData.waterContaminants = ["None", "Chlorine", "Lead", "Bacteria"][Math.floor(Math.random() * 4)];
+            updateSensorData();
+        }, 5000); // Update every 5 seconds
+    </script>
+</body>
+
+</html>
